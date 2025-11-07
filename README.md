@@ -37,7 +37,7 @@ Le système utilise le dataset **CoLA** pour entraîner un classificateur binair
 
 ## ✨ Fonctionnalités
 
-- 🤖 **Modèle BERT Fine-tuné** : Entraîné spécifiquement sur le dataset CoLA pour l'évaluation grammaticale
+- 🤖 **Modèle BERT fine_tuning** : Entraîné spécifiquement sur le dataset CoLA pour l'évaluation grammaticale
 - 🌐 **Interface Web Interactive** : Application Streamlit conviviale pour des tests en temps réel
 - ⚡ **Inférence Rapide** : Prédictions instantanées de grammaticalité avec scores de confiance
 - 📊 **Classification Binaire** : Identification précise des phrases correctes/incorrectes
