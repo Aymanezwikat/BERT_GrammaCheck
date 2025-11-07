@@ -1,0 +1,23 @@
+New-Item -Path . -Name ".gitignore" -ItemType "file" -Force
+@"
+# Environnements virtuels
+venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Checkpoints Jupyter
+*.ipynb_checkpoints/
+
+# Données ou modèles volumineux
+model_save/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Cache Streamlit
+.streamlit/
+"@ | Out-File -FilePath .gitignore -Encoding UTF8
