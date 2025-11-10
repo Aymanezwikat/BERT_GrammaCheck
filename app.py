@@ -11,7 +11,7 @@
 # ===============================================================
 
 import torch
-from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import streamlit as st
 from PIL import Image
 
@@ -25,13 +25,15 @@ def load_model():
     depuis le dossier ./bert_cola_finetuned/
     """
     model_path = "./bert_cola_finetuned/"
-    model = BertForSequenceClassification.from_pretrained(model_path)
-    tokenizer = BertTokenizer.from_pretrained(model_path)
+    model = AutoModelForSequenceClassification.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_path)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
     model.eval()
     return model, tokenizer, device
 
+
+# Chargement une seule fois grâce au cache Streamlit
 model, tokenizer, device = load_model()
 
 # ---------------------------------------------------------------
@@ -58,6 +60,7 @@ def predict_sentence(sentence: str) -> str:
         prediction = torch.argmax(logits, dim=1).item()
 
     return "✅ Phrase grammaticalement correcte" if prediction == 1 else "❌ Phrase incorrecte grammaticalement"
+
 
 # ---------------------------------------------------------------
 # 🎨 3. Interface utilisateur Streamlit
